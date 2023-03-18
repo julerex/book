@@ -359,12 +359,12 @@ those crates you require. In this case, we specify the `rand` crate with the
 semantic version specifier `0.8.5`. Cargo understands [Semantic
 Versioning][semver]<!-- ignore --> (sometimes called *SemVer*), which is a
 standard for writing version numbers. The specifier `0.8.5` is actually
-shorthand for `^0.8.5`, which means any version that is at least 0.8.5 but
-below 0.9.0.
+shorthand for `^0.8.5`, which means any version that is at least `0.8.5` but
+below `0.9.0`.
 
 Cargo considers these versions to have public APIs compatible with version
-0.8.5, and this specification ensures you’ll get the latest patch release that
-will still compile with the code in this chapter. Any version 0.9.0 or greater
+`0.8.5`, and this specification ensures you’ll get the latest patch release that
+will still compile with the code in this chapter. Any version `0.9.0` or greater
 is not guaranteed to have the same API as what the following examples use.
 
 Now, without changing any of the code, let’s build the project, as shown in
@@ -445,7 +445,7 @@ reuse what it has already downloaded and compiled for those.
 Cargo has a mechanism that ensures you can rebuild the same artifact every time
 you or anyone else builds your code: Cargo will use only the versions of the
 dependencies you specified until you indicate otherwise. For example, say that
-next week version 0.8.6 of the `rand` crate comes out, and that version
+next week version `0.8.6` of the `rand` crate comes out, and that version
 contains an important bug fix, but it also contains a regression that will
 break your code. To handle this, Rust creates the *Cargo.lock* file the first
 time you run `cargo build`, so we now have this in the *guessing_game*
@@ -457,7 +457,7 @@ of the dependencies that fit the criteria and then writes them to the
 that the *Cargo.lock* file exists and will use the versions specified there
 rather than doing all the work of figuring out versions again. This lets you
 have a reproducible build automatically. In other words, your project will
-remain at 0.8.5 until you explicitly upgrade, thanks to the *Cargo.lock* file.
+remain at `0.8.5` until you explicitly upgrade, thanks to the *Cargo.lock* file.
 Because the *Cargo.lock* file is important for reproducible builds, it’s often
 checked into source control with the rest of the code in your project.
 
@@ -467,8 +467,8 @@ When you *do* want to update a crate, Cargo provides the command `update`,
 which will ignore the *Cargo.lock* file and figure out all the latest versions
 that fit your specifications in *Cargo.toml*. Cargo will then write those
 versions to the *Cargo.lock* file. Otherwise, by default, Cargo will only look
-for versions greater than 0.8.5 and less than 0.9.0. If the `rand` crate has
-released the two new versions 0.8.6 and 0.9.0, you would see the following if
+for versions greater than `0.8.5` and less than `0.9.0`. If the `rand` crate has
+released the two new versions `0.8.6` and `0.9.0`, you would see the following if
 you ran `cargo update`:
 
 <!-- manual-regeneration
@@ -483,9 +483,9 @@ $ cargo update
     Updating rand v0.8.5 -> v0.8.6
 ```
 
-Cargo ignores the 0.9.0 release. At this point, you would also notice a change
+Cargo ignores the `0.9.0` release. At this point, you would also notice a change
 in your *Cargo.lock* file noting that the version of the `rand` crate you are
-now using is 0.8.6. To use `rand` version 0.9.0 or any version in the 0.9.*x*
+now using is `0.8.6`. To use `rand` version `0.9.0` or any version in the `0.9.x`
 series, you’d have to update the *Cargo.toml* file to look like this instead:
 
 ```toml
